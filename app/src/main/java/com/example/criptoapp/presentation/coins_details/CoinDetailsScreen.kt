@@ -1,7 +1,5 @@
 package com.example.criptoapp.presentation.coins_details
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -26,12 +24,8 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
-import com.example.criptoapp.data.remote.dto.TeamMember
-import com.example.criptoapp.presentation.Screens
 import com.example.criptoapp.presentation.coins_details.components.CoinTag
 import com.example.criptoapp.presentation.coins_details.components.TeamListItem
-import com.example.criptoapp.presentation.coins_list.components.CoinListItem
 import com.google.accompanist.flowlayout.FlowRow
 
 @Composable
@@ -53,7 +47,7 @@ fun CoinDetailsScreen(
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Text(
-                            text = "${coin.rank}. ${coin.name} )${coin.symbol})",
+                            text = "${coin.rank}. ${coin.name} (${coin.symbol})",
                             style = MaterialTheme.typography.headlineLarge,
                             modifier = Modifier.weight(8f)
                         )
@@ -71,7 +65,7 @@ fun CoinDetailsScreen(
 
                     Text(
                         text = coin.description,
-                        style = MaterialTheme.typography.bodyMedium
+                        style = MaterialTheme.typography.bodyLarge
                     )
 
                     Spacer(modifier = Modifier.height(15.dp))

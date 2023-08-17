@@ -13,13 +13,13 @@ import javax.inject.Inject
 class GetCoinUseCase @Inject constructor(private val repository: CoinRepository) {
     operator fun invoke(coinId: String): Flow<Resource<CoinDetail>> = flow {
         try {
-            emit(Resource.Loading())
+            emit(Resource.Loading<CoinDetail>())
             val coin = repository.getCoinById(coinId).toCoinDetail()
-            emit(Resource.Success(coin))
+            emit(Resource.Success<CoinDetail>(coin))
         } catch (e: HttpException) {
-            emit(Resource.Error(e.localizedMessage ?: "Error inesperado"))
+            emit(Resource.Error<CoinDetail>(e.localizedMessage ?: "Error inesperado"))
         } catch (e: IOException) {
-            emit(Resource.Error("Cheque sua conexão com a internet"))
+            emit(Resource.Error<CoinDetail>("Cheque sua conexão com a internet"))
         }
     }
 }
