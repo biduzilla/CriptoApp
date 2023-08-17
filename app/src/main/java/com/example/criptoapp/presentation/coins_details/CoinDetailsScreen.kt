@@ -1,5 +1,6 @@
 package com.example.criptoapp.presentation.coins_details
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -13,6 +14,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Divider
+import androidx.compose.material3.DividerDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -34,7 +36,11 @@ fun CoinDetailsScreen(
 ) {
     val state = viewModel.state.value
 
-    Box(modifier = Modifier.fillMaxSize()) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = Color.Black)
+    ) {
         state.coin?.let { coin ->
 
             LazyColumn(
@@ -49,7 +55,8 @@ fun CoinDetailsScreen(
                         Text(
                             text = "${coin.rank}. ${coin.name} (${coin.symbol})",
                             style = MaterialTheme.typography.headlineLarge,
-                            modifier = Modifier.weight(8f)
+                            modifier = Modifier.weight(8f),
+                            color = Color.White
                         )
                         Text(
                             text = if (coin.isActive) "active" else "inactive",
@@ -65,14 +72,16 @@ fun CoinDetailsScreen(
 
                     Text(
                         text = coin.description,
-                        style = MaterialTheme.typography.bodyLarge
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = Color.White
                     )
 
                     Spacer(modifier = Modifier.height(15.dp))
 
                     Text(
                         text = "Tags",
-                        style = MaterialTheme.typography.headlineMedium
+                        style = MaterialTheme.typography.headlineMedium,
+                        color = Color.White
                     )
 
                     Spacer(modifier = Modifier.height(15.dp))
@@ -91,7 +100,8 @@ fun CoinDetailsScreen(
 
                     Text(
                         text = "Team Members",
-                        style = MaterialTheme.typography.headlineMedium
+                        style = MaterialTheme.typography.headlineMedium,
+                        color = Color.White
                     )
 
                     Spacer(modifier = Modifier.height(15.dp))
@@ -103,7 +113,7 @@ fun CoinDetailsScreen(
                             .fillMaxWidth()
                             .padding(10.dp)
                     )
-                    Divider()
+                    Divider(modifier = Modifier.background(Color.White))
                 }
             }
 
