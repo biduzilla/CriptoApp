@@ -8,14 +8,13 @@ import androidx.lifecycle.viewModelScope
 import com.example.criptoapp.common.Constants
 import com.example.criptoapp.common.Resource
 import com.example.criptoapp.domain.use_case.get_coin.GetCoinUseCase
-import com.example.criptoapp.domain.use_case.get_coins.GetCoinsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @HiltViewModel
-class CoinsListViewModel @Inject constructor(
+class CoinsDetailsViewModel @Inject constructor(
     private val getCoinUseCase: GetCoinUseCase,
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
@@ -44,7 +43,7 @@ class CoinsListViewModel @Inject constructor(
                 }
 
                 is Resource.Success -> {
-                    _state.value = CoinsDetailsState(coin = result.data ?: null)
+                    _state.value = CoinsDetailsState(coin = result.data)
                 }
             }
         }.launchIn(viewModelScope)
