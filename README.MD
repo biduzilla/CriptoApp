@@ -18,4 +18,4 @@ regras para o controle delas.
 - AnimatedNavHost
 
 # Layout Mobile
-![Mobile 1](imgs/1.pgn)
+![Mobile 1](imgs/1.png)
