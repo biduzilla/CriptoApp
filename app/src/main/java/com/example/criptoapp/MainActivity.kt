@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.criptoapp.navigation.NavAnimatedGraph
 import com.example.criptoapp.presentation.Screens
 import com.example.criptoapp.presentation.coins_details.CoinDetailsScreen
 import com.example.criptoapp.presentation.coins_list.CoinListScren
@@ -18,18 +19,19 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             CriptoAppTheme {
-                val navController = rememberNavController()
-                NavHost(
-                    navController = navController,
-                    startDestination = Screens.CoinListScreen.route
-                ) {
-                    composable(route = Screens.CoinListScreen.route) {
-                        CoinListScren(navController)
-                    }
-                    composable(route = Screens.CoinDetailScreen.route + "/{coinId}") {
-                        CoinDetailsScreen()
-                    }
-                }
+                NavAnimatedGraph()
+//                val navController = rememberNavController()
+//                NavHost(
+//                    navController = navController,
+//                    startDestination = Screens.CoinListScreen.route
+//                ) {
+//                    composable(route = Screens.CoinListScreen.route) {
+//                        CoinListScren(navController)
+//                    }
+//                    composable(route = Screens.CoinDetailScreen.route + "/{coinId}") {
+//                        CoinDetailsScreen()
+//                    }
+//                }
             }
         }
     }
